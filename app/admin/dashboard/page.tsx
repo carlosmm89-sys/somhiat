@@ -7,10 +7,10 @@ const fontD = "'Hanken Grotesk', sans-serif";
 
 export default function AdminDashboard() {
   const total        = STATIC_PROJECTS.length;
-  const obraNueva    = STATIC_PROJECTS.filter((p) => p.category === "obra-nueva").length;
+  const obraNueva    = STATIC_PROJECTS.filter((p) => p.category === "obra_nueva").length;
   const rehabilitacion = STATIC_PROJECTS.filter((p) => p.category === "rehabilitacion").length;
   const viviendas    = STATIC_PROJECTS.filter((p) => p.category === "viviendas").length;
-  const inProgress   = STATIC_PROJECTS.filter((p) => p.status === "in-progress").length;
+  const inProgress   = STATIC_PROJECTS.filter((p) => p.status === "in_progress").length;
   const recent       = [...STATIC_PROJECTS].sort((a, b) => b.sort_order - a.sort_order).slice(0, 5);
 
   const stats = [

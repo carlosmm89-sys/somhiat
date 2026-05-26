@@ -1,7 +1,7 @@
 // ── Types for SOMHi Arquitectura Técnica ──────────────────
 
 export type ProjectCategory =
-  | "obra-nueva"
+  | "obra_nueva"
   | "rehabilitacion"
   | "viviendas"
   | "otros";
@@ -14,7 +14,7 @@ export interface Project {
   year: number | null;
   location: string | null;
   client: string | null;
-  status: "completed" | "in-progress";
+  status: "completed" | "in_progress";
   area: string | null;
   description: string | null;
   body: string | null;
@@ -36,7 +36,7 @@ export interface ContactMessage {
 
 export const CATEGORY_LABELS: Record<ProjectCategory | "todos", string> = {
   todos:          "Todos",
-  "obra-nueva":   "Obra Nueva",
+  "obra_nueva":   "Obra Nueva",
   rehabilitacion: "Rehabilitación",
   viviendas:      "Viviendas",
   otros:          "Otros",

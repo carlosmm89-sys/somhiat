@@ -8,7 +8,7 @@ const fontB = "'Inter', sans-serif";
 const fontD = "'Hanken Grotesk', sans-serif";
 
 const DEFAULT_CATS = [
-  { id: 1, value: "obra-nueva",     label_es: "Obra Nueva",                 label_ca: "Obra Nova",                 label_en: "New Build",              label_fr: "Construction Neuve" },
+  { id: 1, value: "obra_nueva",     label_es: "Obra Nueva",                 label_ca: "Obra Nova",                 label_en: "New Build",              label_fr: "Construction Neuve" },
   { id: 2, value: "rehabilitacion", label_es: "Rehabilitación de Edificios", label_ca: "Rehabilitació d'Edificis",  label_en: "Building Rehabilitation", label_fr: "Réhabilitation" },
   { id: 3, value: "viviendas",      label_es: "Viviendas",                   label_ca: "Habitatges",                label_en: "Homes",                  label_fr: "Logements" },
 ];
