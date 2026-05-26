@@ -29,52 +29,51 @@ export default function CookieBanner() {
 
   return (
     <div style={{
-      position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 9999,
+      position: "fixed", bottom: "1.5rem", left: "1.5rem", zIndex: 9999,
       backgroundColor: "rgba(42, 60, 69, 0.97)",
       backdropFilter: "blur(12px)",
-      borderTop: "1px solid rgba(195,224,197,0.12)",
-      padding: "1.25rem 2rem",
+      border: "1px solid rgba(195,224,197,0.12)",
+      borderRadius: "12px",
+      padding: "1.25rem 1.5rem",
+      maxWidth: "380px",
+      boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
       animation: "slideUp 0.5s cubic-bezier(0.22, 1, 0.36, 1)",
     }}>
-      <div style={{
-        maxWidth: "1200px", margin: "0 auto",
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-        gap: "1.5rem", flexWrap: "wrap",
+      <p style={{
+        fontFamily: "var(--font-inter),'Inter',sans-serif",
+        fontSize: "0.8rem", color: "#b8c8d0", lineHeight: 1.6,
+        marginBottom: "1rem",
       }}>
-        <p style={{
+        🍪 Usamos cookies técnicas para el funcionamiento del sitio.{" "}
+        <Link href="/politica-de-cookies" style={{ color: "#C3E0C5", textDecoration: "underline", textUnderlineOffset: "2px" }}>
+          Más información
+        </Link>
+      </p>
+      <div style={{ display: "flex", gap: "0.75rem" }}>
+        <button onClick={reject} style={{
+          flex: 1, padding: "0.55rem 1rem",
+          backgroundColor: "transparent",
+          border: "1px solid rgba(195,224,197,0.25)",
+          borderRadius: "6px",
+          color: "#8fb0a8",
           fontFamily: "var(--font-inter),'Inter',sans-serif",
-          fontSize: "0.85rem", color: "#b8c8d0", lineHeight: 1.5,
-          flex: 1, minWidth: "280px",
+          fontSize: "0.75rem", cursor: "pointer",
+          transition: "all 0.2s",
         }}>
-          Usamos cookies técnicas para el funcionamiento del sitio.{" "}
-          <Link href="/politica-de-cookies" style={{ color: "#C3E0C5", textDecoration: "underline", textUnderlineOffset: "2px" }}>
-            Más información
-          </Link>
-        </p>
-        <div style={{ display: "flex", gap: "0.75rem", flexShrink: 0 }}>
-          <button onClick={reject} style={{
-            padding: "0.6rem 1.25rem",
-            backgroundColor: "transparent",
-            border: "1px solid rgba(195,224,197,0.25)",
-            color: "#8fb0a8",
-            fontFamily: "var(--font-inter),'Inter',sans-serif",
-            fontSize: "0.8rem", cursor: "pointer",
-            transition: "all 0.2s",
-          }}>
-            Rechazar
-          </button>
-          <button onClick={accept} style={{
-            padding: "0.6rem 1.25rem",
-            backgroundColor: "#C3E0C5",
-            border: "1px solid #C3E0C5",
-            color: "#1a3d24",
-            fontFamily: "var(--font-inter),'Inter',sans-serif",
-            fontSize: "0.8rem", fontWeight: 500, cursor: "pointer",
-            transition: "all 0.2s",
-          }}>
-            Aceptar
-          </button>
-        </div>
+          Rechazar
+        </button>
+        <button onClick={accept} style={{
+          flex: 1, padding: "0.55rem 1rem",
+          backgroundColor: "#C3E0C5",
+          border: "1px solid #C3E0C5",
+          borderRadius: "6px",
+          color: "#1a3d24",
+          fontFamily: "var(--font-inter),'Inter',sans-serif",
+          fontSize: "0.75rem", fontWeight: 500, cursor: "pointer",
+          transition: "all 0.2s",
+        }}>
+          Aceptar
+        </button>
       </div>
     </div>
   );
