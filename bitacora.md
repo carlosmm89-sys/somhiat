@@ -77,10 +77,10 @@
   - Log de últimas 30 visitas
 
 ### 10. Favicon y OG Image
-- favicon.ico en /app/
-- icon-512.png y apple-touch-icon.png en /public/
-- og-image.jpg (1200x630) para WhatsApp/redes sociales
-- Metadata icons configurados en layout.tsx
+- Favicon dinámico servido desde `/api/favicon` → lee de Supabase Storage
+- icon-192.png, icon-512.png y apple-touch-icon.png generados con sharp
+- og-image.jpg (1200x630) con S centrada sobre fondo #354853
+- Upload de favicon/logo desde panel admin → Supabase Storage (bucket `site-assets`)
 
 ### 11. Infraestructura y Deploy
 - **Vercel:** deploy automático desde GitHub (main)
@@ -89,11 +89,41 @@
 - **DNS:** A record → 76.76.21.21, CNAME www → cname.vercel-dns.com
 - **Variables de entorno:** Supabase + SMTP configuradas en Vercel
 
-### 12. Bugs corregidos
+### 12. Panel de Configuración (/admin/configuracion)
+- **General:** nombre del sitio, URL
+- **Contacto:** email, teléfono, WhatsApp, dirección
+- **Redes sociales:** LinkedIn, Instagram
+- **SEO:** meta título, meta descripción
+- **Imágenes:** upload de favicon y logo a Supabase Storage con preview
+- **Footer:** crédito desarrollo
+- **Persistencia:** datos guardados en tabla `site_config` de Supabase
+
+### 13. Sidebar Admin mejorado
+- Categorías anidada como sub-item de Proyectos
+- Sub-items visibles cuando la sección padre está activa
+- Logo imagen (logo-somhi.png) en sidebar y login
+- Pestaña Configuración con icono ⚙
+
+### 14. Seguridad (Headers HTTP)
+- `X-Frame-Options: DENY` (anti-clickjacking)
+- `X-Content-Type-Options: nosniff` (anti-MIME sniffing)
+- `Referrer-Policy: strict-origin-when-cross-origin`
+- `X-XSS-Protection: 1; mode=block`
+- `Permissions-Policy: camera=(), microphone=(), geolocation=()`
+
+### 15. Bugs corregidos
 - **Category CHECK constraint:** código usaba guiones (`obra-nueva`) pero DB usa guiones bajos (`obra_nueva`). Corregido en 8 archivos
 - **Status "En Ejecución":** Cardedeu y Pablo Iglesias corregidos a `completed` tanto en DB como en static-data.ts
 - **Responsive mobile:** grids estandarizados con clases CSS (grid-2col, grid-3col, flex-footer)
 - **Foto duplicada en Nosotros:** intercambiada benito-obra.jpg para evitar repetición
+- **Sidebar desaparecía en Categorías:** corregida lógica active para incluir rutas hijas
+- **Favicon no aparecía:** convertido a PNG real con sharp, luego a ruta dinámica /api/favicon
+
+### 16. Auditoría Final
+- **Sitemap:** ampliado de 7 a 25 URLs (incluye 18 proyectos individuales)
+- **Security headers:** 5 headers HTTP añadidos en next.config.ts
+- **Remote patterns:** limpiados (eliminados unsplash y googleusercontent innecesarios)
+- **Resultado:** ✅ PRODUCCIÓN LISTA
 
 ---
 
@@ -103,22 +133,47 @@
 |---------|-------------|
 | `app/layout.tsx` | Root layout con fonts, metadata, Analytics |
 | `app/page.tsx` | Home page |
+| `app/sitemap.ts` | 25 URLs dinámicas |
+| `app/robots.ts` | Bloquea /admin/ y /api/ |
+| `app/not-found.tsx` | Página 404 personalizada |
 | `app/proyectos/page.tsx` | Lista de proyectos con filtros |
 | `app/proyectos/[slug]/page.tsx` | Detalle de proyecto |
 | `app/nosotros/page.tsx` | Página sobre nosotros |
 | `app/contacto/page.tsx` | Formulario de contacto |
-| `app/admin/layout.tsx` | Admin layout con sidebar |
+| `app/admin/layout.tsx` | Admin layout con sidebar + sub-items |
 | `app/admin/dashboard/page.tsx` | Dashboard admin |
-| `app/admin/analytics/page.tsx` | Analíticas |
+| `app/admin/analytics/page.tsx` | Analíticas propias |
+| `app/admin/configuracion/page.tsx` | Configuración persistente |
+| `app/admin/categorias/page.tsx` | CRUD categorías |
 | `app/admin/proyectos/[slug]/page.tsx` | Editar proyecto |
 | `app/api/contact/route.ts` | API formulario contacto |
 | `app/api/analytics/route.ts` | API registro de visitas |
+| `app/api/favicon/route.ts` | Favicon dinámico desde Storage |
 | `components/PageTracker.tsx` | Tracker de visitas |
 | `components/CookieBanner.tsx` | Banner cookies flotante |
 | `lib/i18n.ts` | Traducciones ES/CA/EN/FR |
 | `lib/static-data.ts` | 18 proyectos estáticos |
 | `lib/smtp.ts` | Módulo envío email |
+| `middleware.ts` | Auth guard /admin/* |
+| `next.config.ts` | Config + security headers |
 | `types/index.ts` | Tipos TypeScript |
+
+---
+
+## 🗄️ Tablas Supabase
+
+| Tabla | Descripción |
+|-------|-------------|
+| `projects` | 18 proyectos (slug, title, category, status, gallery...) |
+| `contact_messages` | Formularios de contacto (name, email, message) |
+| `page_views` | Analíticas (path, referrer, created_at) |
+| `site_config` | Configuración clave/valor (key, value, updated_at) |
+
+**Storage Buckets:**
+| Bucket | Tipo | Uso |
+|--------|------|-----|
+| `project-images` | Public | Imágenes de proyectos |
+| `site-assets` | Public | Favicon, logo, assets del sitio |
 
 ---
 
@@ -132,12 +187,18 @@
 
 ---
 
-## 📌 Estado final
+## 📌 Estado final — 27 mayo 2026
 - ✅ Web pública live en somhiat.com
-- ✅ Panel admin funcional
-- ✅ 4 idiomas completos
-- ✅ SEO, sitemap, robots
-- ✅ SMTP configurado
-- ✅ Analytics propio
-- ✅ Favicon + OG image
+- ✅ Panel admin funcional (6 secciones)
+- ✅ 4 idiomas completos (ES/CA/EN/FR)
+- ✅ SEO completo (25 URLs en sitemap)
+- ✅ Security headers (5 headers)
+- ✅ SMTP configurado (dual: DB + email)
+- ✅ Analytics propio + Vercel
+- ✅ Favicon dinámico + OG image
+- ✅ Configuración persistente en Supabase
+- ✅ Upload de imágenes (favicon/logo)
+- ✅ RGPD completo (3 páginas + cookies)
 - ✅ SSL automático Vercel
+- ✅ **AUDITORÍA FINAL PASADA**
+
