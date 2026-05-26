@@ -73,6 +73,13 @@ export default function Footer() {
           <p style={{ fontFamily: font, fontSize: "0.6rem", letterSpacing: "0.08em", color: "#8fa8a0" }}>
             © {year} SOMHI Arquitectura Técnica. {tr.footer.rights}
           </p>
+          <p style={{ fontFamily: font, fontSize: "0.55rem", letterSpacing: "0.06em", color: "#5e7a72" }}>
+            Desarrollo by{" "}
+            <a href="https://tonwy.com" target="_blank" rel="noopener noreferrer" style={{ color: "#7a9a8e", textDecoration: "none", transition: "color 0.2s" }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#C3E0C5"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#7a9a8e"; }}
+            >Tonwy.com</a>
+          </p>
           <div style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
             {LANGS.map(({ code, label }, i) => (
               <span key={code} style={{ display: "flex", alignItems: "center" }}>
