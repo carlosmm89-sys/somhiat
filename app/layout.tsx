@@ -3,6 +3,7 @@ import { Hanken_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import PublicShell from "@/components/layout/PublicShell";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { Analytics } from "@vercel/analytics/react";
 
 const hankenGrotesk = Hanken_Grotesk({
   subsets: ["latin"],
@@ -79,6 +80,7 @@ export default function RootLayout({
         <LanguageProvider>
           <PublicShell>{children}</PublicShell>
         </LanguageProvider>
+        <Analytics />
       </body>
     </html>
   );
