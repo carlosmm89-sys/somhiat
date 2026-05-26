@@ -25,7 +25,7 @@ export async function POST(request: Request) {
 
     // 1. Save to Supabase (if configured)
     const dbResult = await saveContactMessage({ name, email, subject, message });
-    if (!dbResult.success) {
+    if (!dbResult.ok) {
       console.warn("[Contact] DB save failed:", dbResult.error);
       // Don't block — continue to email
     }
@@ -37,7 +37,7 @@ export async function POST(request: Request) {
     }
 
     // Consider success if at least one channel worked
-    if (!dbResult.success && !emailResult.success) {
+    if (!dbResult.ok && !emailResult.success) {
       return NextResponse.json(
         { error: "Error al procesar el mensaje" },
         { status: 500 }

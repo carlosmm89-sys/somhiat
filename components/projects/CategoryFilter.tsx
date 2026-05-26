@@ -17,7 +17,7 @@ export default function CategoryFilter({ active, onChange }: CategoryFilterProps
 
   const filters: { value: Filter; label: string }[] = [
     { value: "all",           label: f.all },
-    { value: "obra_nueva",    label: f.obra_nueva },
+    { value: "obra-nueva",    label: f.obra_nueva },
     { value: "rehabilitacion",label: f.rehabilitacion },
     { value: "viviendas",     label: f.viviendas },
   ];

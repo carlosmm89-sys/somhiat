@@ -11,7 +11,7 @@ const fontD = "'Hanken Grotesk', sans-serif";
 
 const CATS = [
   { value: "all",              label: "Todos" },
-  { value: "obra_nueva",       label: "Obra Nueva" },
+  { value: "obra-nueva",       label: "Obra Nueva" },
   { value: "rehabilitacion",   label: "Rehabilitación" },
   { value: "viviendas",        label: "Viviendas" },
 ];

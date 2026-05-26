@@ -11,7 +11,7 @@ const fontB = "'Inter', sans-serif";
 const fontD = "'Hanken Grotesk', sans-serif";
 
 const CATS: { value: ProjectCategory; label: string }[] = [
-  { value: "obra_nueva",      label: "Obra Nueva" },
+  { value: "obra-nueva",      label: "Obra Nueva" },
   { value: "rehabilitacion",  label: "Rehabilitación de Edificios" },
   { value: "viviendas",       label: "Viviendas" },
 ];
@@ -41,7 +41,7 @@ export default function NuevoProyectoPage() {
       location:    fd.get("location") as string,
       year:        fd.get("year") ? Number(fd.get("year")) : null,
       client:      fd.get("client") as string,
-      status:      fd.get("status") as "completed" | "in_progress",
+      status:      fd.get("status") as "completed" | "in-progress",
       cover_url:   fd.get("cover_url") as string || null,
       gallery:     JSON.parse((fd.get("gallery") as string) || "[]"),
       featured:    fd.get("featured") === "on",
@@ -91,7 +91,7 @@ export default function NuevoProyectoPage() {
           <Field label="Estado">
             <select name="status" style={inputStyle}>
               <option value="completed">Completado</option>
-              <option value="in_progress">En ejecución</option>
+              <option value="in-progress">En ejecución</option>
             </select>
           </Field>
           <Field label="Ubicación">

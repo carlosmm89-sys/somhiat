@@ -12,7 +12,7 @@ const fontB = "'Inter', sans-serif";
 const fontD = "'Hanken Grotesk', sans-serif";
 
 const CATS: { value: ProjectCategory; label: string }[] = [
-  { value: "obra_nueva",      label: "Obra Nueva" },
+  { value: "obra-nueva",      label: "Obra Nueva" },
   { value: "rehabilitacion",  label: "Rehabilitación de Edificios" },
   { value: "viviendas",       label: "Viviendas" },
 ];
@@ -59,7 +59,7 @@ export default function EditarProyectoPage({ params }: Props) {
       location:    fd.get("location") as string,
       year:        fd.get("year") ? Number(fd.get("year")) : null,
       client:      fd.get("client") as string,
-      status:      fd.get("status") as "completed" | "in_progress",
+      status:      fd.get("status") as "completed" | "in-progress",
       cover_url:   fd.get("cover_url") as string || project.cover_url,
       gallery:     JSON.parse((fd.get("gallery") as string) || JSON.stringify(project.gallery ?? [])),
       featured:    fd.get("featured") === "on",
@@ -136,7 +136,7 @@ export default function EditarProyectoPage({ params }: Props) {
           <Field label="Estado">
             <select name="status" defaultValue={project.status ?? "completed"} style={inputStyle}>
               <option value="completed">Completado</option>
-              <option value="in_progress">En ejecución</option>
+              <option value="in-progress">En ejecución</option>
             </select>
           </Field>
           <Field label="Ubicación">
@@ -163,7 +163,7 @@ export default function EditarProyectoPage({ params }: Props) {
 
         <div style={{ marginBottom: "1.5rem" }}>
           <label style={{ display: "flex", alignItems: "center", gap: "0.75rem", cursor: "pointer" }}>
-            <input type="checkbox" name="featured" defaultChecked={project.featured ?? false} style={{ accentColor: "#c4f1d5" }} />
+            <input type="checkbox" name="featured" defaultChecked={project.is_featured ?? false} style={{ accentColor: "#c4f1d5" }} />
             <span style={{ fontFamily: fontB, fontSize: "0.875rem", color: "#8b938c" }}>
               Destacar en la página principal
             </span>
