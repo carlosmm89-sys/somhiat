@@ -63,6 +63,10 @@ export const metadata: Metadata = {
     description: "Dirección de obra y control de calidad en Barcelona.",
   },
   robots: { index: true, follow: true },
+  icons: {
+    icon: "/api/favicon",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
