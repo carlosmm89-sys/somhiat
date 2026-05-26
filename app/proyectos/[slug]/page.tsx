@@ -106,7 +106,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           </div>
 
           {/* Sidebar: Ficha técnica */}
-          <div style={{ backgroundColor: "#131819", border: "1px solid rgba(195,224,197,0.08)", padding: "2rem", position: "sticky", top: "88px" }}>
+          <div style={{ backgroundColor: "#2a3c45", border: "1px solid rgba(195,224,197,0.08)", padding: "2rem", position: "sticky", top: "88px" }}>
             <h2 style={{ fontFamily: font, fontSize: "0.6rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#c4f1d5", marginBottom: "1.5rem", paddingBottom: "1rem", borderBottom: "1px solid rgba(195,224,197,0.08)" }}>
               Ficha Técnica
             </h2>
