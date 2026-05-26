@@ -62,9 +62,8 @@ export default function AdminLoginPage() {
 
         {/* Logo */}
         <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-          <p style={{ fontFamily: font, fontSize: "1.4rem", fontWeight: 700, color: "#C3E0C5", letterSpacing: "0.08em" }}>
-            SOMHi
-          </p>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-somhi.png" alt="SOMHi" style={{ height: "40px", marginBottom: "0.75rem" }} />
           <p style={{ fontFamily: font, fontSize: "0.55rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#8fb0a8", marginTop: "0.5rem" }}>
             Panel de administración
           </p>

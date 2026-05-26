@@ -5,11 +5,12 @@ import { usePathname, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase-client";
 
 const NAV: { href: string; label: string; icon: string; children?: { href: string; label: string }[] }[] = [
-  { href: "/admin/dashboard",   label: "Dashboard",   icon: "◈" },
-  { href: "/admin/proyectos",   label: "Proyectos",   icon: "▦", children: [
+  { href: "/admin/dashboard",      label: "Dashboard",      icon: "◈" },
+  { href: "/admin/proyectos",      label: "Proyectos",      icon: "▦", children: [
     { href: "/admin/categorias", label: "Categorías" },
   ]},
-  { href: "/admin/analytics",   label: "Analíticas",  icon: "◫" },
+  { href: "/admin/analytics",      label: "Analíticas",     icon: "◫" },
+  { href: "/admin/configuracion",  label: "Configuración",  icon: "⚙" },
 ];
 
 const font  = "'JetBrains Mono', monospace";
@@ -43,12 +44,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       }}>
         {/* Logo */}
         <div style={{ padding: "1.75rem 1.5rem", borderBottom: "1px solid rgba(195,224,197,0.07)" }}>
-          <p style={{ fontFamily: font, fontSize: "1rem", fontWeight: 700, color: "#C3E0C5", letterSpacing: "0.08em" }}>
-            SOMHi
-          </p>
-          <p style={{ fontFamily: font, fontSize: "0.45rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#2c3e47", marginTop: "0.25rem" }}>
-            Admin
-          </p>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-somhi.png" alt="SOMHi" style={{ height: "28px" }} />
         </div>
 
         {/* Nav */}
