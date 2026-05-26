@@ -5,6 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CookieBanner from "@/components/CookieBanner";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import PageTracker from "@/components/PageTracker";
 
 export default function PublicShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -19,6 +20,7 @@ export default function PublicShell({ children }: { children: React.ReactNode })
       <Footer />
       <WhatsAppButton />
       <CookieBanner />
+      <PageTracker />
     </>
   );
 }

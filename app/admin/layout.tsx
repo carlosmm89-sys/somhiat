@@ -8,6 +8,7 @@ const NAV = [
   { href: "/admin/dashboard",   label: "Dashboard",   icon: "◈" },
   { href: "/admin/proyectos",   label: "Proyectos",   icon: "▦" },
   { href: "/admin/categorias",  label: "Categorías",  icon: "◉" },
+  { href: "/admin/analytics",   label: "Analíticas",  icon: "◫" },
 ];
 
 const font  = "'JetBrains Mono', monospace";
