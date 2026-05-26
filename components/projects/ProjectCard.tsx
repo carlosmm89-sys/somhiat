@@ -19,8 +19,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           <img
             src={project.cover_url}
             alt={project.title}
-            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 1.2s ease-out, filter 1.2s ease-out", filter: "grayscale(15%)" }}
-            className="group-hover:scale-[1.04] group-hover:!filter-none"
+            className="project-img"
+            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             loading="lazy"
           />
         ) : (
@@ -42,16 +42,14 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             </span>
           )}
         </div>
-        <div className="flex items-center justify-between">
-          <span className="font-mono text-label-sm text-on-surface-variant uppercase tracking-widest">
+        <span className="font-mono text-label-sm text-on-surface-variant uppercase tracking-widest">
             {CATEGORY_LABELS[project.category]}
           </span>
           {project.location && (
-            <span className="font-mono text-label-sm text-on-surface-variant/60">
+            <p className="font-mono text-on-surface-variant/50 mt-1" style={{ fontSize: "0.65rem", letterSpacing: "0.03em", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
               {project.location}
-            </span>
+            </p>
           )}
-        </div>
 
         {project.description && (
           <p className="mt-3 font-body text-body-md text-on-surface-variant line-clamp-2 leading-relaxed">

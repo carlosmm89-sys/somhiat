@@ -170,6 +170,19 @@ body {
   filter: grayscale(0%);
 }
 
+/* ── Project card image zoom ── */
+.project-img {
+  transform: scale(1);
+  filter: grayscale(15%) brightness(0.95);
+  transition: transform 2.5s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 2s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+.group:hover .project-img {
+  transform: scale(1.035);
+  filter: grayscale(0%) brightness(1);
+}
+
 /* ── Floating label form ── */
 .form-group {
   position: relative;

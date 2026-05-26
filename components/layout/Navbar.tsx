@@ -37,7 +37,7 @@ export default function Navbar() {
       <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "72px" }}>
         {/* Logo */}
         <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
-          <Image src="/logo-somhi.png" alt="SOMHi" width={130} height={42} style={{ height: "34px", width: "auto" }} priority />
+          <Image src="/logo-somhi.png" alt="SOMHi" width={160} height={52} style={{ height: "44px", width: "auto" }} priority />
         </Link>
 
         {/* Desktop nav */}

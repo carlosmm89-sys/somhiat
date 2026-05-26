@@ -18,6 +18,12 @@ export default function Footer() {
     { href: "/contacto",  label: tr.nav.contact },
   ];
 
+  const legalLinks = [
+    { href: "/aviso-legal",              label: "Aviso Legal" },
+    { href: "/politica-de-privacidad",   label: "Privacidad" },
+    { href: "/politica-de-cookies",      label: "Cookies" },
+  ];
+
   return (
     <footer style={{ backgroundColor: "#2a3c45", borderTop: "1px solid rgba(195,224,197,0.08)", padding: "4rem 0 2rem" }}>
       <div className="container">
@@ -26,7 +32,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" style={{ display: "inline-block", marginBottom: "1rem" }}>
-              <Image src="/logo-somhi.png" alt="SOMHi" width={80} height={26} style={{ height: "24px", width: "auto" }} />
+              <Image src="/logo-somhi.png" alt="SOMHi" width={200} height={65} style={{ height: "56px", width: "auto" }} />
             </Link>
             <p style={{ fontFamily: fontBody, fontSize: "0.875rem", color: "#adbdb5", maxWidth: "260px", lineHeight: 1.6 }}>
               {tr.footer.tagline}
@@ -40,6 +46,18 @@ export default function Footer() {
                 {l.label}
               </Link>
             ))}
+          </nav>
+
+          {/* Legal */}
+          <nav style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }} aria-label="Legal">
+            {legalLinks.map(l => (
+              <Link key={l.href} href={l.href} style={{ fontFamily: fontBody, fontSize: "0.8rem", color: "#7a9a90", textDecoration: "none" }}>
+                {l.label}
+              </Link>
+            ))}
+            <Link href="/admin" style={{ fontFamily: font, fontSize: "0.6rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "#5a7a70", textDecoration: "none", marginTop: "0.5rem" }}>
+              Acceso ·
+            </Link>
           </nav>
 
           {/* Contact */}
