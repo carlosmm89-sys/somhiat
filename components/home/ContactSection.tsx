@@ -41,7 +41,7 @@ export default function ContactSection() {
   return (
     <section style={{ padding: "6rem 0", backgroundColor: "#2a3c45", borderTop: "1px solid rgba(195,224,197,0.08)" }}>
       <div className="container">
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "start" }}>
+        <div className="grid-2col" style={{ gap: "5rem", alignItems: "start" }}>
 
           {/* Left */}
           <ScrollReveal direction="left" delay={0.1}>

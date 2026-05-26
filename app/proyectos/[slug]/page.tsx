@@ -52,7 +52,7 @@ export default async function ProjectDetailPage({ params }: Props) {
 
       {/* ── Hero full-width ── */}
       {project.cover_url && (
-        <div style={{ position: "relative", height: "80vh", width: "100%", overflow: "hidden" }}>
+        <div className="hero-cover" style={{ position: "relative", height: "80vh", width: "100%", overflow: "hidden" }}>
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={project.cover_url}
@@ -83,7 +83,7 @@ export default async function ProjectDetailPage({ params }: Props) {
 
       {/* ── Content ── */}
       <div className="container" style={{ paddingTop: "4rem", paddingBottom: "4rem" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: "4rem", alignItems: "start", marginBottom: "4rem" }}>
+        <div className="grid-2col-content" style={{ gap: "4rem", alignItems: "start", marginBottom: "4rem" }}>
 
           {/* Description */}
           <div>
@@ -106,7 +106,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           </div>
 
           {/* Sidebar: Ficha técnica */}
-          <div style={{ backgroundColor: "#2a3c45", border: "1px solid rgba(195,224,197,0.08)", padding: "2rem", position: "sticky", top: "88px" }}>
+          <div className="ficha-tecnica" style={{ backgroundColor: "#2a3c45", border: "1px solid rgba(195,224,197,0.08)", padding: "2rem", position: "sticky", top: "88px" }}>
             <h2 style={{ fontFamily: font, fontSize: "0.6rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#c4f1d5", marginBottom: "1.5rem", paddingBottom: "1rem", borderBottom: "1px solid rgba(195,224,197,0.08)" }}>
               Ficha Técnica
             </h2>

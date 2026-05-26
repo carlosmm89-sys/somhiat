@@ -12,7 +12,7 @@ export default function AboutPreview() {
   return (
     <section style={{ padding: "7rem 0", backgroundColor: "#354853" }}>
       <div className="container">
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "center" }}>
+        <div className="grid-2col" style={{ gap: "5rem", alignItems: "center" }}>
 
           {/* Left: photo */}
           <ScrollReveal direction="left" delay={0.1}>

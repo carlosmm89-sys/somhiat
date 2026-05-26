@@ -69,7 +69,7 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
         </div>
 
         {/* Masonry */}
-        <div style={{ columnCount: 3, columnGap: "0.625rem" }}>
+        <div className="gallery-masonry">
           {shown.map((url, i) => (
             <div
               key={i}

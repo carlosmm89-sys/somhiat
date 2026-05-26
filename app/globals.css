@@ -298,34 +298,67 @@ body {
   .mobile-menu { display: none !important; }
 }
 
-/* ── Mobile layout adjustments ── */
+/* ── Responsive grid helpers ── */
+.grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.grid-2col-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+.grid-3col {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+}
+.flex-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.gallery-masonry {
+  column-count: 3;
+  column-gap: 0.625rem;
+}
+
 @media (max-width: 768px) {
-  /* Stack 2-column grids */
-  section > div > div[style*="gridTemplateColumns: \"1fr 1fr\""],
-  section > div > div[style*="grid-template-columns"] {
+  /* Stack all 2-col grids */
+  .grid-2col {
     grid-template-columns: 1fr !important;
     gap: 2rem !important;
   }
+  .grid-2col-content {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  .grid-3col {
+    grid-template-columns: 1fr !important;
+  }
 
-  /* Reduce hero heading sizes */
-  h1 { font-size: clamp(2rem, 7vw, 3rem) !important; }
-
-  /* Reduce section padding */
-  section { padding-top: 3rem !important; padding-bottom: 3rem !important; }
-
-  /* Footer columns stack */
-  footer > div > div:first-child {
+  /* Footer stack */
+  .flex-footer {
     flex-direction: column !important;
     gap: 2rem !important;
   }
 
-  /* Stats grid on dashboard */
-  div[style*="gridTemplateColumns: \"repeat(5"] {
-    grid-template-columns: repeat(2, 1fr) !important;
+  /* Gallery 2 columns on mobile */
+  .gallery-masonry {
+    column-count: 2 !important;
   }
 
-  /* Bento grid single column */
-  div[style*="minmax(340px"] {
-    grid-template-columns: 1fr !important;
+  /* Reduce section padding */
+  section { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+
+  /* Hero height */
+  .hero-cover { height: 60vh !important; }
+
+  /* Ficha tecnica not sticky on mobile */
+  .ficha-tecnica { position: static !important; }
+}
+
+@media (max-width: 480px) {
+  .gallery-masonry {
+    column-count: 1 !important;
   }
 }
