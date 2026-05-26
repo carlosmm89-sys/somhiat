@@ -4,10 +4,11 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase-client";
 
-const NAV = [
+const NAV: { href: string; label: string; icon: string; children?: { href: string; label: string }[] }[] = [
   { href: "/admin/dashboard",   label: "Dashboard",   icon: "◈" },
-  { href: "/admin/proyectos",   label: "Proyectos",   icon: "▦" },
-  { href: "/admin/categorias",  label: "Categorías",  icon: "◉" },
+  { href: "/admin/proyectos",   label: "Proyectos",   icon: "▦", children: [
+    { href: "/admin/categorias", label: "Categorías" },
+  ]},
   { href: "/admin/analytics",   label: "Analíticas",  icon: "◫" },
 ];
 
@@ -52,22 +53,40 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
         {/* Nav */}
         <nav style={{ padding: "1.5rem 0", flex: 1 }}>
-          {NAV.map(({ href, label, icon }) => {
+          {NAV.map(({ href, label, icon, children: subs }) => {
             const active = pathname.startsWith(href);
             return (
-              <Link key={href} href={href} style={{
-                display: "flex", alignItems: "center", gap: "0.75rem",
-                padding: "0.75rem 1.5rem",
-                backgroundColor: active ? "rgba(195,224,197,0.07)" : "transparent",
-                borderLeft: active ? "2px solid #C3E0C5" : "2px solid transparent",
-                color: active ? "#C3E0C5" : "#8b9a90",
-                fontFamily: font, fontSize: "0.6rem", letterSpacing: "0.1em",
-                textTransform: "uppercase", textDecoration: "none",
-                transition: "all 0.15s",
-              }}>
-                <span style={{ fontSize: "0.9rem" }}>{icon}</span>
-                {label}
-              </Link>
+              <div key={href}>
+                <Link href={href} style={{
+                  display: "flex", alignItems: "center", gap: "0.75rem",
+                  padding: "0.75rem 1.5rem",
+                  backgroundColor: active ? "rgba(195,224,197,0.07)" : "transparent",
+                  borderLeft: active ? "2px solid #C3E0C5" : "2px solid transparent",
+                  color: active ? "#C3E0C5" : "#8b9a90",
+                  fontFamily: font, fontSize: "0.6rem", letterSpacing: "0.1em",
+                  textTransform: "uppercase", textDecoration: "none",
+                  transition: "all 0.15s",
+                }}>
+                  <span style={{ fontSize: "0.9rem" }}>{icon}</span>
+                  {label}
+                </Link>
+                {subs && active && subs.map((sub) => {
+                  const subActive = pathname.startsWith(sub.href);
+                  return (
+                    <Link key={sub.href} href={sub.href} style={{
+                      display: "block",
+                      padding: "0.5rem 1.5rem 0.5rem 3.25rem",
+                      color: subActive ? "#C3E0C5" : "#6b8078",
+                      fontFamily: font, fontSize: "0.5rem", letterSpacing: "0.08em",
+                      textTransform: "uppercase", textDecoration: "none",
+                      backgroundColor: subActive ? "rgba(195,224,197,0.04)" : "transparent",
+                      transition: "all 0.15s",
+                    }}>
+                      › {sub.label}
+                    </Link>
+                  );
+                })}
+              </div>
             );
           })}
         </nav>
