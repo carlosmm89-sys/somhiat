@@ -13,7 +13,7 @@ export default function NosotrosPage() {
       {/* Section 1: Mission */}
       <section style={{ padding: "5rem 0 4rem", borderBottom: "1px solid rgba(195,224,197,0.08)" }}>
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "start" }}>
+          <div className="grid-2col" style={{ gap: "5rem", alignItems: "start" }}>
             <div>
               <p style={{ fontFamily: "var(--font-jetbrains),'JetBrains Mono',monospace", fontSize: "0.6rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#C3E0C5", marginBottom: "1.5rem" }}>
                 {ab.eyebrow}
@@ -27,24 +27,16 @@ export default function NosotrosPage() {
               </p>
             </div>
 
-            {/* Blueprint decorative */}
-            <div style={{ border: "1px solid rgba(195,224,197,0.12)", aspectRatio: "1", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
-              <div style={{ border: "1px solid rgba(195,224,197,0.06)", width: "75%", aspectRatio: "1", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <p style={{ fontFamily: "var(--font-jetbrains),'JetBrains Mono',monospace", fontSize: "0.6rem", letterSpacing: "0.3em", color: "rgba(195,224,197,0.2)", textAlign: "center", textTransform: "uppercase" }}>
-                  SOMHi<br />ARQUITECTURA<br />TÉCNICA
-                </p>
-              </div>
-              {[["2px","2px","top","left"],["2px","2px","top","right"],["auto","2px","bottom","left"],["auto","2px","bottom","right"]].map(([t,b,vv,hh]) => (
-                <div key={`${vv}${hh}`} style={{
-                  position: "absolute", width: "12px", height: "12px",
-                  top: vv === "top" ? "8px" : "auto", bottom: vv === "bottom" ? "8px" : "auto",
-                  left: hh === "left" ? "8px" : "auto", right: hh === "right" ? "8px" : "auto",
-                  borderTop: vv === "top" ? "1px solid rgba(195,224,197,0.3)" : "none",
-                  borderBottom: vv === "bottom" ? "1px solid rgba(195,224,197,0.3)" : "none",
-                  borderLeft: hh === "left" ? "1px solid rgba(195,224,197,0.3)" : "none",
-                  borderRight: hh === "right" ? "1px solid rgba(195,224,197,0.3)" : "none",
-                }} />
-              ))}
+            {/* Photo */}
+            <div style={{ position: "relative", aspectRatio: "4/5", overflow: "hidden", border: "1px solid rgba(195,224,197,0.1)" }}>
+              <Image
+                src="/benito-villa.jpg"
+                alt="Benito Villa — SOMHi Arquitectura Técnica"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                style={{ objectFit: "cover", filter: "grayscale(20%)", objectPosition: "top" }}
+              />
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(53,72,83,0.4), transparent)" }} />
             </div>
           </div>
         </div>
@@ -53,7 +45,7 @@ export default function NosotrosPage() {
       {/* Section 2: Benito Villa */}
       <section style={{ padding: "5rem 0", backgroundColor: "#30424c", borderBottom: "1px solid rgba(195,224,197,0.08)" }}>
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "center" }}>
+          <div className="grid-2col" style={{ gap: "5rem", alignItems: "center" }}>
             {/* Photo */}
             <div style={{ position: "relative", border: "1px solid rgba(195,224,197,0.1)", padding: "4px", overflow: "hidden" }}>
               <div style={{ position: "relative", aspectRatio: "4/5", overflow: "hidden" }}>
@@ -107,7 +99,7 @@ export default function NosotrosPage() {
               {ab.valuesLabel}
             </p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.5rem" }}>
+          <div className="grid-3col" style={{ gap: "1.5rem" }}>
             {ab.values.map((val) => (
               <div key={val.title} style={{ backgroundColor: "#30424c", border: "1px solid rgba(195,224,197,0.08)", padding: "2.5rem", transition: "border-color 0.3s" }}>
                 <div style={{ width: "48px", height: "48px", border: "1px solid rgba(195,224,197,0.2)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.5rem" }}>

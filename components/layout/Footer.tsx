@@ -28,7 +28,7 @@ export default function Footer() {
     <footer style={{ backgroundColor: "#2a3c45", borderTop: "1px solid rgba(195,224,197,0.08)", padding: "4rem 0 2rem" }}>
       <div className="container">
         {/* Top row */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "3rem", flexWrap: "wrap", gap: "2rem" }}>
+        <div className="flex-footer" style={{ marginBottom: "3rem", gap: "2rem" }}>
           {/* Brand */}
           <div>
             <Link href="/" style={{ display: "inline-block", marginBottom: "1rem" }}>

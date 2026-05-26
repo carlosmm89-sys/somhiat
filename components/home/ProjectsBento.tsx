@@ -43,7 +43,7 @@ export default function ProjectsBento({ projects }: Props) {
             </p>
           </div>
         ) : (
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: "1.5rem" }}>
+          <div className="grid-3col" style={{ gap: "1.5rem" }}>
             {projects.slice(0, 4).map((p) => (
               <Link key={p.id} href={`/proyectos/${p.slug}`} className="group" style={{ textDecoration: "none" }}>
                 <article style={{ position: "relative", aspectRatio: "4/3", overflow: "hidden", backgroundColor: "#3a4f5a", cursor: "pointer" }}>
