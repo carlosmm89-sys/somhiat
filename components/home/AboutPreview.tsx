@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 export default function AboutPreview() {
   const { tr } = useLanguage();
@@ -14,6 +15,7 @@ export default function AboutPreview() {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "center" }}>
 
           {/* Left: photo */}
+          <ScrollReveal direction="left" delay={0.1}>
           <div style={{ position: "relative" }}>
             <div style={{ position: "relative", aspectRatio: "3/4", overflow: "hidden", backgroundColor: "#3a4f5a" }}>
               <Image
@@ -42,8 +44,10 @@ export default function AboutPreview() {
               </p>
             </div>
           </div>
+          </ScrollReveal>
 
           {/* Right: content */}
+          <ScrollReveal direction="right" delay={0.2}>
           <div>
             <p style={{ fontFamily: "var(--font-jetbrains),'JetBrains Mono',monospace", fontSize: "0.6rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#C3E0C5", marginBottom: "1.5rem" }}>
               {ab.eyebrow2}
@@ -80,6 +84,7 @@ export default function AboutPreview() {
               {ab.cta}
             </Link>
           </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

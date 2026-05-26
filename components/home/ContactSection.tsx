@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 export default function ContactSection() {
   const { tr } = useLanguage();
@@ -43,6 +44,7 @@ export default function ContactSection() {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "start" }}>
 
           {/* Left */}
+          <ScrollReveal direction="left" delay={0.1}>
           <div>
             <h2 style={{
               fontFamily: "var(--font-hanken),'Hanken Grotesk',sans-serif",
@@ -75,8 +77,10 @@ export default function ContactSection() {
               ))}
             </div>
           </div>
+          </ScrollReveal>
 
           {/* Right: Form */}
+          <ScrollReveal direction="right" delay={0.2}>
           <div style={{ backgroundColor: "#3a4f5a", border: "1px solid rgba(195,224,197,0.08)", padding: "2.5rem", position: "relative", overflow: "hidden" }}>
             <div className="blueprint-grid" style={{ position: "absolute", inset: 0, pointerEvents: "none" }} />
             <form onSubmit={onSubmit} style={{ position: "relative", zIndex: 1 }}>
@@ -105,6 +109,7 @@ export default function ContactSection() {
               {status === "error"   && <p style={{ marginTop: "1rem", fontFamily: "var(--font-jetbrains),'JetBrains Mono',monospace", fontSize: "0.6rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "#ffb4ab", textAlign: "center" }}>{ct.error}</p>}
             </form>
           </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

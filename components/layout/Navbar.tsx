@@ -24,6 +24,11 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Close menu on route change
+  useEffect(() => {
+    setMenuOpen(false);
+  }, []);
+
   const links = navLinks(tr);
 
   return (
@@ -41,7 +46,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-        <nav style={{ display: "flex", alignItems: "center", gap: "2.5rem" }} aria-label="Navegación principal">
+        <nav className="desktop-nav" style={{ display: "flex", alignItems: "center", gap: "2.5rem" }} aria-label="Navegación principal">
           {links.map(l => (
             <Link key={l.href} href={l.href} className="nav-link" style={{
               fontFamily: "var(--font-inter),'Inter',sans-serif",
@@ -54,9 +59,8 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Right: lang switcher + CTA */}
-        <div style={{ display: "flex", alignItems: "center", gap: "1.25rem" }}>
-          {/* Language switcher */}
+        {/* Desktop right: lang + CTA */}
+        <div className="desktop-right" style={{ display: "flex", alignItems: "center", gap: "1.25rem" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
             {LANGS.map(({ code, label }, i) => (
               <span key={code} style={{ display: "flex", alignItems: "center" }}>
@@ -82,8 +86,6 @@ export default function Navbar() {
               </span>
             ))}
           </div>
-
-          {/* CTA */}
           <Link href="/contacto" style={{
             fontFamily: "var(--font-inter),'Inter',sans-serif",
             fontSize: "13px", letterSpacing: "0.03em",
@@ -97,7 +99,83 @@ export default function Navbar() {
             {tr.nav.cta}
           </Link>
         </div>
+
+        {/* Mobile hamburger */}
+        <button
+          className="mobile-menu-btn"
+          onClick={() => setMenuOpen(!menuOpen)}
+          style={{
+            display: "none", alignItems: "center", justifyContent: "center",
+            background: "none", border: "none", cursor: "pointer",
+            width: "44px", height: "44px", padding: 0,
+          }}
+          aria-label="Abrir menú"
+        >
+          <div style={{ display: "flex", flexDirection: "column", gap: menuOpen ? "0" : "5px", width: "24px", transition: "all 0.3s" }}>
+            <span style={{
+              display: "block", height: "2px", backgroundColor: "#C3E0C5",
+              transition: "all 0.3s",
+              transform: menuOpen ? "rotate(45deg) translateY(1px)" : "none",
+            }} />
+            <span style={{
+              display: "block", height: "2px", backgroundColor: "#C3E0C5",
+              transition: "all 0.3s",
+              opacity: menuOpen ? 0 : 1,
+            }} />
+            <span style={{
+              display: "block", height: "2px", backgroundColor: "#C3E0C5",
+              transition: "all 0.3s",
+              transform: menuOpen ? "rotate(-45deg) translateY(-1px)" : "none",
+            }} />
+          </div>
+        </button>
       </div>
+
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div className="mobile-menu" style={{
+          backgroundColor: "rgba(53,72,83,0.98)",
+          backdropFilter: "blur(16px)",
+          borderTop: "1px solid rgba(195,224,197,0.08)",
+          padding: "2rem",
+          animation: "slideUp 0.3s ease",
+        }}>
+          <nav style={{ display: "flex", flexDirection: "column", gap: "1.5rem", marginBottom: "2rem" }}>
+            {links.map(l => (
+              <Link key={l.href} href={l.href} onClick={() => setMenuOpen(false)} style={{
+                fontFamily: "var(--font-inter),'Inter',sans-serif",
+                fontSize: "1.1rem", color: "#e8ecef", textDecoration: "none",
+              }}>{l.label}</Link>
+            ))}
+          </nav>
+
+          {/* Mobile language switcher */}
+          <div style={{ display: "flex", gap: "1rem", marginBottom: "1.5rem" }}>
+            {LANGS.map(({ code, label }) => (
+              <button key={code} onClick={() => { setLang(code); setMenuOpen(false); }} style={{
+                fontFamily: "var(--font-jetbrains),'JetBrains Mono',monospace",
+                fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase",
+                color: lang === code ? "#C3E0C5" : "#8fb0a8",
+                background: "none", border: lang === code ? "1px solid #C3E0C5" : "1px solid rgba(195,224,197,0.15)",
+                padding: "0.4rem 0.75rem", cursor: "pointer",
+                fontWeight: lang === code ? 600 : 400,
+              }}>
+                {label}
+              </button>
+            ))}
+          </div>
+
+          {/* Mobile CTA */}
+          <Link href="/contacto" onClick={() => setMenuOpen(false)} style={{
+            display: "block", textAlign: "center",
+            backgroundColor: "#C3E0C5", color: "#1a3d24",
+            padding: "0.875rem", fontFamily: "var(--font-inter),'Inter',sans-serif",
+            fontSize: "14px", fontWeight: 600, textDecoration: "none",
+          }}>
+            {tr.nav.cta}
+          </Link>
+        </div>
+      )}
     </header>
   );
 }

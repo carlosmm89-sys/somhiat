@@ -269,3 +269,63 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ── Keyframe animations ── */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(100%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ── Mobile responsive ── */
+@media (max-width: 900px) {
+  .desktop-nav { display: none !important; }
+  .desktop-right { display: none !important; }
+  .mobile-menu-btn { display: flex !important; }
+}
+
+@media (min-width: 901px) {
+  .mobile-menu-btn { display: none !important; }
+  .mobile-menu { display: none !important; }
+}
+
+/* ── Mobile layout adjustments ── */
+@media (max-width: 768px) {
+  /* Stack 2-column grids */
+  section > div > div[style*="gridTemplateColumns: \"1fr 1fr\""],
+  section > div > div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  /* Reduce hero heading sizes */
+  h1 { font-size: clamp(2rem, 7vw, 3rem) !important; }
+
+  /* Reduce section padding */
+  section { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+
+  /* Footer columns stack */
+  footer > div > div:first-child {
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+
+  /* Stats grid on dashboard */
+  div[style*="gridTemplateColumns: \"repeat(5"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Bento grid single column */
+  div[style*="minmax(340px"] {
+    grid-template-columns: 1fr !important;
+  }
+}
