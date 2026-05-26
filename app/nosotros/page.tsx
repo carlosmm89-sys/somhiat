@@ -30,8 +30,8 @@ export default function NosotrosPage() {
             {/* Photo */}
             <div style={{ position: "relative", aspectRatio: "4/5", overflow: "hidden", border: "1px solid rgba(195,224,197,0.1)" }}>
               <Image
-                src="/benito-villa.jpg"
-                alt="Benito Villa — SOMHi Arquitectura Técnica"
+                src="/benito-obra.jpg"
+                alt="Benito Villa en obra — SOMHi Arquitectura Técnica"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 style={{ objectFit: "cover", filter: "grayscale(20%)", objectPosition: "top" }}
