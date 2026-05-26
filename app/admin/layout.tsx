@@ -54,7 +54,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         {/* Nav */}
         <nav style={{ padding: "1.5rem 0", flex: 1 }}>
           {NAV.map(({ href, label, icon, children: subs }) => {
-            const active = pathname.startsWith(href);
+            const active = pathname.startsWith(href) || (subs?.some(s => pathname.startsWith(s.href)) ?? false);
             return (
               <div key={href}>
                 <Link href={href} style={{
