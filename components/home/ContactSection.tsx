@@ -33,8 +33,8 @@ export default function ContactSection() {
   };
   const labelStyle: React.CSSProperties = {
     fontFamily: "var(--font-jetbrains),'JetBrains Mono',monospace",
-    fontSize: "0.6rem", letterSpacing: "0.12em", textTransform: "uppercase",
-    color: "#8b9a90", display: "block", marginBottom: "0.5rem",
+    fontSize: "0.75rem", letterSpacing: "0.12em", textTransform: "uppercase",
+    color: "#b0c5b8", display: "block", marginBottom: "0.6rem",
   };
 
   return (
